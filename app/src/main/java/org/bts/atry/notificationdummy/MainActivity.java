@@ -15,8 +15,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button btnStandardNotification = (Button) findViewById(R.id.buttonToNotify);
-        final Button btnCustomNotification = (Button) findViewById(R.id.buttonToCustomNotify);
+        final Button btnStandardNotification = (Button) findViewById(R.id.button_to_notify);
+        final Button btnCustomNotification = (Button) findViewById(R.id.button_to_custom_notify);
         btnStandardNotification.setOnClickListener(this);
         btnCustomNotification.setOnClickListener(this);
 
@@ -27,10 +27,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.buttonToNotify:
+            case R.id.button_to_notify:
                 Log.i(MainActivity.TAG, "Notify btn clicked");
                 break;
-            case R.id.buttonToCustomNotify:
+            case R.id.button_to_custom_notify:
                 Log.i(MainActivity.TAG, "Custom Notify btn clicked");
                 break;
             default:
