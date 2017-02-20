@@ -50,6 +50,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void triggerCustomNotification() {
         RemoteViews mRemoteViews = new RemoteViews(this.getPackageName(),R.layout.layout_custom_notification);
+        mRemoteViews.setImageViewResource(R.id.imageViewNotification, R.drawable.messenger_icon);
+        mRemoteViews.setTextViewText(R.id.txtViewTitle, this.getResources().getString(R.string.custom_notify_text_1));
+        mRemoteViews.setTextViewText(R.id.txtViewBody, this.getResources().getString(R.string.custom_notify_text_2));
+        mRemoteViews.setTextViewText(R.id.txtViewFootnote, this.getResources().getString(R.string.custom_notify_text_3));
+
+        android.support.v4.app.NotificationCompat.Builder mCustomBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.messenger_icon)
+                .setContent(mRemoteViews);
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+
+        PendingIntent mPendingIntent = PendingIntent
+                .getActivity(this, 1, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        mCustomBuilder.setContentIntent(mPendingIntent);
+
+        NotificationManager mNotifManager = (NotificationManager) this
+                .getSystemService(Service.NOTIFICATION_SERVICE);
+
+        mNotifManager.notify(1, mCustomBuilder.build());
+
     }
 
     private void triggerRegularNotification() {
